@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Caching Driver &mdash; CodeIgniter 3.1.9 documentation</title>
+  <title>Zip Encoding Class &mdash; CodeIgniter 3.1.9 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="CodeIgniter 3.1.9 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
-        <link rel="next" title="Calendaring Class" href="calendar.html"/>
-        <link rel="prev" title="Benchmarking Class" href="benchmark.html"/> 
+        <link rel="next" title="Database Reference" href="../database/index.html"/>
+        <link rel="prev" title="XML-RPC and XML-RPC Server Classes" href="xmlrpc.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -124,7 +124,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Libraries</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmarking Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendaring Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cart.html">Shopping Cart Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
@@ -152,7 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zip Encoding Class</a></li>
 </ul>
 </li>
 </ul>
@@ -308,7 +308,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Libraries</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmarking Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching Driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendaring Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cart.html">Shopping Cart Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
@@ -336,7 +336,7 @@
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zip Encoding Class</a></li>
 </ul>
 </li>
 </ul>
@@ -410,7 +410,7 @@
       
         <li><a href="index.html">Libraries</a> &raquo;</li>
       
-    <li>Caching Driver</li>
+    <li>Zip Encoding Class</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -422,167 +422,153 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="caching-driver">
-<h1>Caching Driver<a class="headerlink" href="#caching-driver" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter features wrappers around some of the most popular forms of
-fast and dynamic caching. All but file-based caching require specific
-server requirements, and a Fatal Exception will be thrown if server
-requirements are not met.</p>
+  <div class="section" id="zip-encoding-class">
+<h1>Zip Encoding Class<a class="headerlink" href="#zip-encoding-class" title="Permalink to this headline">¶</a></h1>
+<p>CodeIgniter’s Zip Encoding Class permits you to create Zip archives.
+Archives can be downloaded to your desktop or saved to a directory.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#example-usage" id="id1">Example Usage</a></li>
-<li><a class="reference internal" href="#class-reference" id="id2">Class Reference</a></li>
-<li><a class="reference internal" href="#drivers" id="id3">Drivers</a><ul>
-<li><a class="reference internal" href="#alternative-php-cache-apc-caching" id="id4">Alternative PHP Cache (APC) Caching</a></li>
-<li><a class="reference internal" href="#file-based-caching" id="id5">File-based Caching</a></li>
-<li><a class="reference internal" href="#memcached-caching" id="id6">Memcached Caching</a></li>
-<li><a class="reference internal" href="#wincache-caching" id="id7">WinCache Caching</a></li>
-<li><a class="reference internal" href="#redis-caching" id="id8">Redis Caching</a></li>
-<li><a class="reference internal" href="#dummy-cache" id="id9">Dummy Cache</a></li>
+<li><a class="reference internal" href="#using-the-zip-encoding-class" id="id1">Using the Zip Encoding Class</a><ul>
+<li><a class="reference internal" href="#initializing-the-class" id="id2">Initializing the Class</a></li>
+<li><a class="reference internal" href="#usage-example" id="id3">Usage Example</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#class-reference" id="id4">Class Reference</a></li>
 </ul>
 </div>
-<div class="custom-index container"></div><div class="section" id="example-usage">
-<h2><a class="toc-backref" href="#id1">Example Usage</a><a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
-<p>The following example will load the cache driver, specify <a class="reference external" href="#alternative-php-cache-apc-caching">APC</a>
-as the driver to use, and fall back to file-based caching if APC is not
-available in the hosting environment.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;adapter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;apc&#39;</span><span class="p">,</span> <span class="s1">&#39;backup&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;file&#39;</span><span class="p">));</span>
-
-<span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">))</span>
-<span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;Saving to the cache!&lt;br /&gt;&#39;</span><span class="p">;</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="s1">&#39;foobarbaz!&#39;</span><span class="p">;</span>
-
-        <span class="c1">// Save into the cache for 5 minutes</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="nv">$foo</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">echo</span> <span class="nv">$foo</span><span class="p">;</span>
+<div class="custom-index container"></div><div class="section" id="using-the-zip-encoding-class">
+<h2><a class="toc-backref" href="#id1">Using the Zip Encoding Class</a><a class="headerlink" href="#using-the-zip-encoding-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initializing-the-class">
+<h3><a class="toc-backref" href="#id2">Initializing the Class</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
+<p>Like most other classes in CodeIgniter, the Zip class is initialized in
+your controller using the $this-&gt;load-&gt;library function:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;zip&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>You can also prefix cache item names via the <strong>key_prefix</strong> setting, which is useful
-to avoid collisions when you’re running multiple applications on the same environment.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
-        <span class="k">array</span><span class="p">(</span><span class="s1">&#39;adapter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;apc&#39;</span><span class="p">,</span> <span class="s1">&#39;backup&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;key_prefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_&#39;</span><span class="p">)</span>
-<span class="p">);</span>
-
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span> <span class="c1">// Will get the cache entry named &#39;my_foo&#39;</span>
+<p>Once loaded, the Zip library object will be available using:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="usage-example">
+<h3><a class="toc-backref" href="#id3">Usage Example</a><a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h3>
+<p>This example demonstrates how to compress a file, save it to a folder on
+your server, and download it to your desktop.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;mydata1.txt&#39;</span><span class="p">;</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;A Data String!&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+
+<span class="c1">// Write the zip file to a folder on your server. Name it &quot;my_backup.zip&quot;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">archive</span><span class="p">(</span><span class="s1">&#39;/path/to/directory/my_backup.zip&#39;</span><span class="p">);</span>
+
+<span class="c1">// Download the file to your desktop. Name it &quot;my_backup.zip&quot;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;my_backup.zip&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="class-reference">
-<h2><a class="toc-backref" href="#id2">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="CI_Cache">
-<em class="property">class </em><code class="descname">CI_Cache</code><a class="headerlink" href="#CI_Cache" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="CI_Cache::is_supported">
-<code class="descname">is_supported</code><span class="sig-paren">(</span><em>$driver</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::is_supported" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$driver</strong> (<em>string</em>) – the name of the caching driver</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE if supported, FALSE if not</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>This method is automatically called when accessing drivers via
-<code class="docutils literal"><span class="pre">$this-&gt;cache-&gt;get()</span></code>. However, if the individual drivers are used,
-make sure to call this method to ensure the driver is supported in the
-hosting environment.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">apc</span><span class="o">-&gt;</span><span class="na">is_supported</span><span class="p">())</span>
-<span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">apc</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;my_cache&#39;</span><span class="p">))</span>
-        <span class="p">{</span>
-                <span class="c1">// do things.</span>
-        <span class="p">}</span>
-<span class="p">}</span>
+<dt id="CI_Zip">
+<em class="property">class </em><code class="descname">CI_Zip</code><a class="headerlink" href="#CI_Zip" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt>
+<code class="descname">$compression_level = 2</code></dt>
+<dd><p>The compression level to use.</p>
+<p>It can range from 0 to 9, with 9 being the highest and 0 effectively disabling compression:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">compression_level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Cache::get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::get" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Zip::add_data">
+<code class="descname">add_data</code><span class="sig-paren">(</span><em>$filepath</em><span class="optional">[</span>, <em>$data = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::add_data" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$id</strong> (<em>string</em>) – Cache item name</li>
+<li><strong>$filepath</strong> (<em>mixed</em>) – A single file path or an array of file =&gt; data pairs</li>
+<li><strong>$data</strong> (<em>array</em>) – File contents (ignored if $filepath is an array)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Item value or FALSE if not found</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>This method will attempt to fetch an item from the cache store. If the
-item does not exist, the method will return FALSE.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;my_cached_item&#39;</span><span class="p">);</span>
+<p>Adds data to the Zip archive. Can work both in single and multiple files mode.</p>
+<p>When adding a single file, the first parameter must contain the name you would
+like given to the file and the second must contain the file contents:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;mydata1.txt&#39;</span><span class="p">;</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;A Data String!&#39;</span><span class="p">;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;mydata2.txt&#39;</span><span class="p">;</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;Another Data String!&#39;</span><span class="p">;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When adding multiple files, the first parameter must contain <em>file =&gt; contents</em> pairs
+and the second parameter is ignored:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;mydata1.txt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;A Data String!&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;mydata2.txt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Another Data String!&#39;</span>
+<span class="p">);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you would like your compressed data organized into sub-directories, simply include
+the path as part of the filename(s):</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;personal/my_bio.txt&#39;</span><span class="p">;</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;I was born in an elevator...&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The above example will place my_bio.txt inside a folder called personal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Zip::add_dir">
+<code class="descname">add_dir</code><span class="sig-paren">(</span><em>$directory</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::add_dir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$directory</strong> (<em>mixed</em>) – Directory name string or an array of multiple directories</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Permits you to add a directory. Usually this method is unnecessary since you can place
+your data into directories when using <code class="docutils literal"><span class="pre">$this-&gt;zip-&gt;add_data()</span></code>, but if you would like
+to create an empty directory you can do so:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_dir</span><span class="p">(</span><span class="s1">&#39;myfolder&#39;</span><span class="p">);</span> <span class="c1">// Creates a directory called &quot;myfolder&quot;</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Cache::save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>$id</em>, <em>$data</em><span class="optional">[</span>, <em>$ttl = 60</em><span class="optional">[</span>, <em>$raw = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::save" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Zip::read_file">
+<code class="descname">read_file</code><span class="sig-paren">(</span><em>$path</em><span class="optional">[</span>, <em>$archive_filepath = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::read_file" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$id</strong> (<em>string</em>) – Cache item name</li>
-<li><strong>$data</strong> (<em>mixed</em>) – the data to save</li>
-<li><strong>$ttl</strong> (<em>int</em>) – Time To Live, in seconds (default 60)</li>
-<li><strong>$raw</strong> (<em>bool</em>) – Whether to store the raw value</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE on success, FALSE on failure</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>This method will save an item to the cache store. If saving fails, the
-method will return FALSE.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;cache_item_id&#39;</span><span class="p">,</span> <span class="s1">&#39;data_to_cache&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">$raw</span></code> parameter is only utilized by APC and Memcache,
-in order to allow usage of <code class="docutils literal"><span class="pre">increment()</span></code> and <code class="docutils literal"><span class="pre">decrement()</span></code>.</p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="CI_Cache::delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::delete" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$id</strong> (<em>string</em>) – name of cached item</li>
+<li><strong>$path</strong> (<em>string</em>) – Path to file</li>
+<li><strong>$archive_filepath</strong> (<em>mixed</em>) – New file name/path (string) or (boolean) whether to maintain the original filepath</li>
 </ul>
 </td>
 </tr>
@@ -594,234 +580,199 @@ in order to allow usage of <code class="docutils literal"><span class="pre">incr
 </tr>
 </tbody>
 </table>
-<p>This method will delete a specific item from the cache store. If item
-deletion fails, the method will return FALSE.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;cache_item_id&#39;</span><span class="p">);</span>
+<p>Permits you to compress a file that already exists somewhere on your server.
+Supply a file path and the zip class will read it and add it to the archive:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/photo.jpg&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_file</span><span class="p">(</span><span class="nv">$path</span><span class="p">);</span>
+
+<span class="c1">// Download the file to your desktop. Name it &quot;my_backup.zip&quot;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;my_backup.zip&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you would like the Zip archive to maintain the directory structure of
+the file in it, pass TRUE (boolean) in the second parameter. Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/photo.jpg&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_file</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
+
+<span class="c1">// Download the file to your desktop. Name it &quot;my_backup.zip&quot;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;my_backup.zip&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In the above example, photo.jpg will be placed into the <em>path/to/</em> directory.</p>
+<p>You can also specify a new name (path included) for the added file on the fly:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/photo.jpg&#39;</span><span class="p">;</span>
+<span class="nv">$new_path</span> <span class="o">=</span> <span class="s1">&#39;/new/path/some_photo.jpg&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_file</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$new_path</span><span class="p">);</span>
+
+<span class="c1">// Download ZIP archive containing /new/path/some_photo.jpg</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;my_archive.zip&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Cache::increment">
-<code class="descname">increment</code><span class="sig-paren">(</span><em>$id</em><span class="optional">[</span>, <em>$offset = 1</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::increment" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Zip::read_dir">
+<code class="descname">read_dir</code><span class="sig-paren">(</span><em>$path</em><span class="optional">[</span>, <em>$preserve_filepath = TRUE</em><span class="optional">[</span>, <em>$root_path = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::read_dir" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$id</strong> (<em>string</em>) – Cache ID</li>
-<li><strong>$offset</strong> (<em>int</em>) – Step/value to add</li>
+<li><strong>$path</strong> (<em>string</em>) – Path to directory</li>
+<li><strong>$preserve_filepath</strong> (<em>bool</em>) – Whether to maintain the original path</li>
+<li><strong>$root_path</strong> (<em>string</em>) – Part of the path to exclude from the archive directory</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">New value on success, FALSE on failure</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE on success, FALSE on failure</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Performs atomic incrementation of a raw stored value.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// &#39;iterator&#39; has a value of 2</span>
+<p>Permits you to compress a directory (and its contents) that already exists somewhere on your server.
+Supply a path to the directory and the zip class will recursively read and recreate it as a Zip archive.
+All files contained within the supplied path will be encoded, as will any sub-directories contained within it. Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/your/directory/&#39;</span><span class="p">;</span>
 
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">&#39;iterator&#39;</span><span class="p">);</span> <span class="c1">// &#39;iterator&#39; is now 3</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_dir</span><span class="p">(</span><span class="nv">$path</span><span class="p">);</span>
 
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">&#39;iterator&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// &#39;iterator&#39; is now 6</span>
+<span class="c1">// Download the file to your desktop. Name it &quot;my_backup.zip&quot;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;my_backup.zip&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>By default the Zip archive will place all directories listed in the first parameter
+inside the zip. If you want the tree preceding the target directory to be ignored,
+you can pass FALSE (boolean) in the second parameter. Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/your/directory/&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_dir</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This will create a ZIP with a directory named “directory” inside, then all sub-directories
+stored correctly inside that, but will not include the <em>/path/to/your</em> part of the path.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Cache::decrement">
-<code class="descname">decrement</code><span class="sig-paren">(</span><em>$id</em><span class="optional">[</span>, <em>$offset = 1</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::decrement" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Zip::archive">
+<code class="descname">archive</code><span class="sig-paren">(</span><em>$filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::archive" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$id</strong> (<em>string</em>) – Cache ID</li>
-<li><strong>$offset</strong> (<em>int</em>) – Step/value to reduce by</li>
+<li><strong>$filepath</strong> (<em>string</em>) – Path to target zip archive</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">New value on success, FALSE on failure</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE on success, FALSE on failure</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Performs atomic decrementation of a raw stored value.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// &#39;iterator&#39; has a value of 6</span>
-
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">decrement</span><span class="p">(</span><span class="s1">&#39;iterator&#39;</span><span class="p">);</span> <span class="c1">// &#39;iterator&#39; is now 5</span>
-
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">decrement</span><span class="p">(</span><span class="s1">&#39;iterator&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// &#39;iterator&#39; is now 3</span>
+<p>Writes the Zip-encoded file to a directory on your server. Submit a valid server path
+ending in the file name. Make sure the directory is writable (755 is usually OK).
+Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">archive</span><span class="p">(</span><span class="s1">&#39;/path/to/folder/myarchive.zip&#39;</span><span class="p">);</span> <span class="c1">// Creates a file named myarchive.zip</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Cache::clean">
-<code class="descname">clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::clean" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Zip::download">
+<code class="descname">download</code><span class="sig-paren">(</span><em>$filename = 'backup.zip'</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::download" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">TRUE on success, FALSE on failure</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$filename</strong> (<em>string</em>) – Archive file name</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
-<p>This method will ‘clean’ the entire cache. If the deletion of the
-cache files fails, the method will return FALSE.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">clean</span><span class="p">();</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="CI_Cache::cache_info">
-<code class="descname">cache_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::cache_info" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information on the entire cache database</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">mixed</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">void</p>
+</td>
 </tr>
 </tbody>
 </table>
-<p>This method will return information on the entire cache.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">cache_info</span><span class="p">());</span>
+<p>Causes the Zip file to be downloaded from your server.
+You must pass the name you would like the zip file called. Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;latest_stuff.zip&#39;</span><span class="p">);</span> <span class="c1">// File will be named &quot;latest_stuff.zip&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The information returned and the structure of the data is dependent
-on which adapter is being used.</p>
+<p class="last">Do not display any data in the controller in which you call
+this method since it sends various server headers that cause the
+download to happen and the file to be treated as binary.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="CI_Cache::get_metadata">
-<code class="descname">get_metadata</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Cache::get_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="CI_Zip::get_zip">
+<code class="descname">get_zip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::get_zip" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$id</strong> (<em>string</em>) – Cache item name</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Zip file content</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Metadata for the cached item</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">mixed</p>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
 </tr>
 </tbody>
 </table>
-<p>This method will return detailed information on a specific item in the
-cache.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">get_metadata</span><span class="p">(</span><span class="s1">&#39;my_cached_item&#39;</span><span class="p">));</span>
+<p>Returns the Zip-compressed file data. Generally you will not need this method unless you
+want to do something unique with the data. Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;my_bio.txt&#39;</span><span class="p">;</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;I was born in an elevator...&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+
+<span class="nv">$zip_file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">get_zip</span><span class="p">();</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The information returned and the structure of the data is dependent
-on which adapter is being used.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_Zip::clear_data">
+<code class="descname">clear_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::clear_data" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+<p>The Zip class caches your zip data so that it doesn’t need to recompile the Zip archive
+for each method you use above. If, however, you need to create multiple Zip archives,
+each with different data, you can clear the cache between calls. Example:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;my_bio.txt&#39;</span><span class="p">;</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;I was born in an elevator...&#39;</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_data</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+<span class="nv">$zip_file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">get_zip</span><span class="p">();</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">clear_data</span><span class="p">();</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;photo.jpg&#39;</span><span class="p">;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_file</span><span class="p">(</span><span class="s2">&quot;/path/to/photo.jpg&quot;</span><span class="p">);</span> <span class="c1">// Read the file&#39;s contents</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;myphotos.zip&#39;</span><span class="p">);</span>
+</pre></div>
 </div>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="drivers">
-<h2><a class="toc-backref" href="#id3">Drivers</a><a class="headerlink" href="#drivers" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="alternative-php-cache-apc-caching">
-<h3><a class="toc-backref" href="#id4">Alternative PHP Cache (APC) Caching</a><a class="headerlink" href="#alternative-php-cache-apc-caching" title="Permalink to this headline">¶</a></h3>
-<p>All of the methods listed above can be accessed without passing a
-specific adapter to the driver loader as follows:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">);</span>
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">apc</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>For more information on APC, please see
-<a class="reference external" href="http://php.net/apc">http://php.net/apc</a>.</p>
-</div>
-<div class="section" id="file-based-caching">
-<h3><a class="toc-backref" href="#id5">File-based Caching</a><a class="headerlink" href="#file-based-caching" title="Permalink to this headline">¶</a></h3>
-<p>Unlike caching from the Output Class, the driver file-based caching
-allows for pieces of view files to be cached. Use this with care, and
-make sure to benchmark your application, as a point can come where disk
-I/O will negate positive gains by caching.</p>
-<p>All of the methods listed above can be accessed without passing a
-specific adapter to the driver loader as follows:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">);</span>
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">file</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="memcached-caching">
-<h3><a class="toc-backref" href="#id6">Memcached Caching</a><a class="headerlink" href="#memcached-caching" title="Permalink to this headline">¶</a></h3>
-<p>Multiple Memcached servers can be specified in the memcached.php
-configuration file, located in the _application/config/* directory.</p>
-<p>All of the methods listed above can be accessed without passing a
-specific adapter to the driver loader as follows:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">);</span>
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">memcached</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>For more information on Memcached, please see
-<a class="reference external" href="http://php.net/memcached">http://php.net/memcached</a>.</p>
-</div>
-<div class="section" id="wincache-caching">
-<h3><a class="toc-backref" href="#id7">WinCache Caching</a><a class="headerlink" href="#wincache-caching" title="Permalink to this headline">¶</a></h3>
-<p>Under Windows, you can also utilize the WinCache driver.</p>
-<p>All of the methods listed above can be accessed without passing a
-specific adapter to the driver loader as follows:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">);</span>
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">wincache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>For more information on WinCache, please see
-<a class="reference external" href="http://php.net/wincache">http://php.net/wincache</a>.</p>
-</div>
-<div class="section" id="redis-caching">
-<h3><a class="toc-backref" href="#id8">Redis Caching</a><a class="headerlink" href="#redis-caching" title="Permalink to this headline">¶</a></h3>
-<p>Redis is an in-memory key-value store which can operate in LRU cache mode.
-To use it, you need <a class="reference external" href="https://github.com/phpredis/phpredis">Redis server and phpredis PHP extension</a>.</p>
-<p>Config options to connect to redis server must be stored in the application/config/redis.php file.
-Available options are:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;socket_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;tcp&#39;</span><span class="p">;</span> <span class="c1">//`tcp` or `unix`</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;socket&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/var/run/redis.sock&#39;</span><span class="p">;</span> <span class="c1">// in case of `unix` socket type</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6379</span><span class="p">;</span>
-<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>All of the methods listed above can be accessed without passing a
-specific adapter to the driver loader as follows:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">driver</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">);</span>
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="o">-&gt;</span><span class="na">redis</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>For more information on Redis, please see
-<a class="reference external" href="http://redis.io">http://redis.io</a>.</p>
-</div>
-<div class="section" id="dummy-cache">
-<h3><a class="toc-backref" href="#id9">Dummy Cache</a><a class="headerlink" href="#dummy-cache" title="Permalink to this headline">¶</a></h3>
-<p>This is a caching backend that will always ‘miss.’ It stores no data,
-but lets you keep your caching code in place in environments that don’t
-support your chosen cache.</p>
-</div>
 </div>
 </div>
 
@@ -831,10 +782,10 @@ support your chosen cache.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="calendar.html" class="btn btn-neutral float-right" title="Calendaring Class">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../database/index.html" class="btn btn-neutral float-right" title="Database Reference">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="benchmark.html" class="btn btn-neutral" title="Benchmarking Class"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xmlrpc.html" class="btn btn-neutral" title="XML-RPC and XML-RPC Server Classes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
